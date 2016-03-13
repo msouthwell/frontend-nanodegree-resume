@@ -14,7 +14,7 @@ var work = {
         "url": "http://www.goarmy.com/careers-and-jobs/browse-career-and-job-categories/combat/field-artillery-officer.html",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lorem magna, vehicula ac convallis vel, ornare ut lectus. Ut dapibus urna sed mauris rutrum aliquet at sit amet libero. Nullam sapien libero, fringilla eu hendrerit eget, condimentum et est. Nulla id augue vel ex sagittis ultricies. Nulla congue iaculis pellentesque. Praesent maximus, libero nec egestas viverra, nisl magna egestas nulla, vitae venenatis ligula magna in lectus. Aliquam placerat auctor pharetra. Nullam at leo elementum, hendrerit nulla a, egestas nibh. Praesent non magna sed massa gravida dapibus."
     }]
-}
+};
 
 var projects = {
     "projects": [{
@@ -23,22 +23,22 @@ var projects = {
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lorem magna, vehicula ac convallis vel, ornare ut lectus. Ut dapibus urna sed mauris rutrum aliquet at sit amet libero. Nullam sapien libero, fringilla eu hendrerit eget, condimentum et est. Nulla id augue vel ex sagittis ultricies. Nulla congue iaculis pellentesque. Praesent maximus, libero nec egestas viverra, nisl magna egestas nulla, vitae venenatis ligula magna in lectus. Aliquam placerat auctor pharetra. Nullam at leo elementum, hendrerit nulla a, egestas nibh. Praesent non magna sed massa gravida dapibus.",
         "images": ["https://placehold.it/300x200"]
     }]
-}
+};
 
 var bio = {
-    "name" : "Matt Southwell",
-    "role" : "Web Developer",
-    "contacts" : {
+    "name": "Matt Southwell",
+    "role": "Web Developer",
+    "contacts": {
         "mobile": "+82-010-2989-2737",
-        "email" : "matt.g.southwell@gmail.com",
+        "email": "matt.g.southwell@gmail.com",
         "github": "msouthwell",
         "twitter": "mg_southwell",
         "location": "Seoul, South Korea"
     },
-    "welcomeMessage" : "I am currently a transitioning US Army Captain and will be leaving the Army in the summer of 2016.  Over the last five years I have performed primarily as an analyst for the military.  Working in 5-15 person teams, I have been heavily involved in deliberate problem solving, resource allocation, and management at the US Army Battalion and Brigade organizational levels (400 persons and 2500 persons, respectively).  Outside of the military I have focused on ensuring my STEM skillset has stayed current by pursuing my Masters in Computer Science at Georgia Tech.",
-    "skills"  : ["Python", "Java", "HTML/CSS", "javaScript", "Machine Learning"],
+    "welcomeMessage": "I am currently a transitioning US Army Captain and will be leaving the Army in the summer of 2016.  Over the last five years I have performed primarily as an analyst for the military.  Working in 5-15 person teams, I have been heavily involved in deliberate problem solving, resource allocation, and management at the US Army Battalion and Brigade organizational levels (400 persons and 2500 persons, respectively).  Outside of the military I have focused on ensuring my STEM skillset has stayed current by pursuing my Masters in Computer Science at Georgia Tech.",
+    "skills": ["Python", "Java", "HTML/CSS", "javaScript", "Machine Learning"],
     "bioPic": "images/me.jpg"
-}
+};
 
 var education = {
     "schools": [{
@@ -62,11 +62,11 @@ var education = {
         "date": "Ongoing",
         "url": "https://www.udacity.com"
     }]
-}
+};
 
 /**
-* Formats and displays all of the information in the bio JSON
-*/
+ * Formats and displays all of the information in the bio JSON
+ */
 bio.display = function() {
     $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
     $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
@@ -81,8 +81,10 @@ bio.display = function() {
     $("#bio").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
     if (bio.skills.length > 0) {
         $("#bio").append(HTMLskillsStart);
-        for (i in bio.skills){
-            $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+        for (var i in bio.skills) {
+            if (bio.skills.hasOwnProperty(i)) {
+                $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+            }
         }
     }
     $("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
@@ -90,69 +92,80 @@ bio.display = function() {
     $("#footerContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
     $("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
     $("#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-}
+};
 /**
-* Formats and displays all of the information in the projects JSON
-*/
+ * Formats and displays all of the information in the projects JSON
+ */
 projects.display = function() {
-    for (project in projects.projects) {
-        $("#projects").append(HTMLprojectStart);
-        $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projects[project].title))
-        $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects.projects[project].dates))
-        $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects.projects[project].description))
-        if (projects.projects[project].images.length > 0) {
-            for (image in projects.projects[project].images){
-                $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.projects[project].images[image]))
+    for (var project in projects.projects) {
+        if (projects.projects.hasOwnProperty(projects)) {
+            $("#projects").append(HTMLprojectStart);
+            $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projects[project].title));
+            $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects.projects[project].dates));
+            $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects.projects[project].description));
+            if (projects.projects[project].images.length > 0) {
+                for (var image in projects.projects[project].images) {
+                    if (projects.projects[project].images.hasOwnProperty(image)) {
+                        $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.projects[project].images[image]));
+                    }
+                }
             }
         }
     }
-}
+};
 /**
-* Formats and displays all of the information in the education JSON
-*/
+ * Formats and displays all of the information in the education JSON
+ */
 education.display = function() {
-    for (i in education.schools){
-        $("#education").append(HTMLschoolStart);
-        var schoolName = HTMLschoolName.replace("%data%", education.schools[i].name);
-        schoolName = schoolName.replace("#", education.schools[i].url);
-        var schoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
-        $(".education-entry:last").append(schoolName + schoolDegree);
-        $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[i].dates));
-        $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[i].location));
-        var majorsString = "";
-        for (j in education.schools[i].majors){
-            majorsString = majorsString + education.schools[i].majors[j];
-            if (j+1 != education.schools[i].majors.length){
-                majorsString = majorsString + ", ";
+    for (var i in education.schools) {
+        if (education.schools.hasOwnProperty(i)) {
+            $("#education").append(HTMLschoolStart);
+            var schoolName = HTMLschoolName.replace("%data%", education.schools[i].name);
+            schoolName = schoolName.replace("#", education.schools[i].url);
+            var schoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+            $(".education-entry:last").append(schoolName + schoolDegree);
+            $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[i].dates));
+            $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[i].location));
+            var majorsString = "";
+            for (var j in education.schools[i].majors) {
+                if (education.schools[i].majors.hasOwnProperty(j)) {
+                    majorsString = majorsString + education.schools[i].majors[j];
+                    if (j + 1 != education.schools[i].majors.length) {
+                        majorsString = majorsString + ", ";
+                    }
+                }
             }
+            $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", majorsString));
         }
-        $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", majorsString));
     }
-    for (i in education.onlineCourses){
-        $(".education-entry:last").append(HTMLonlineClasses);
-        var onlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title);
-        onlineTitle = onlineTitle.replace("#", education.onlineCourses[i].url);
-        var onlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
-        $(".education-entry:last").append(onlineTitle + onlineSchool);
-        $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[i].date));
+    for (var z in education.onlineCourses) {
+        if (education.onlineCourses.hasOwnProperty(z)) {
+            $(".education-entry:last").append(HTMLonlineClasses);
+            var onlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[z].title);
+            onlineTitle = onlineTitle.replace("#", education.onlineCourses[z].url);
+            var onlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[z].school);
+            $(".education-entry:last").append(onlineTitle + onlineSchool);
+            $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[z].date));
+        }
     }
-}
+};
 /**
-* Formats and displays all of the information in the work JSON
-*/
+ * Formats and displays all of the information in the work JSON
+ */
 work.display = function() {
-    for (i in work.jobs){
-        $("#workExperience").append(HTMLworkStart);
-        var workEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
-        workEmployer = workEmployer.replace("#", work.jobs[i].url);
-        var workTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
-        $(".work-entry:last").append(workEmployer + workTitle);
-        $(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[i].dates));
-        $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work.jobs[i].location));
-        $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[i].description));
-
+    for (var i in work.jobs) {
+        if (work.jobs.hasOwnProperty(i)) {
+            $("#workExperience").append(HTMLworkStart);
+            var workEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
+            workEmployer = workEmployer.replace("#", work.jobs[i].url);
+            var workTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
+            $(".work-entry:last").append(workEmployer + workTitle);
+            $(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[i].dates));
+            $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work.jobs[i].location));
+            $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[i].description));
+        }
     }
-}
+};
 
 
 bio.display();
@@ -161,4 +174,3 @@ projects.display();
 education.display();
 
 $("#mapDiv").append(googleMap);
-
