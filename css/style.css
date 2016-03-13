@@ -11,7 +11,51 @@ h5,
 h6 {
   padding:0;
   margin:0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Droid Sans', sans-serif;
+}
+
+
+hr {
+  color: #000;
+
+}
+
+
+h1 {
+  font-size: 40px;
+  color: #64ffda;
+  line-height: 48px;
+  display: inline;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 24px;
+  color: #00BFA5;
+  line-height: 29px;
+  padding: 10px;
+}
+
+h3 {
+  font-style: italic;
+  font-size: 20px;
+  color: #00BFA5;
+  line-height: 22px;
+  padding: 10px;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 14px;
+  color: #00BFA5;
+  line-height: 17px;
+}
+
+h2,
+h4,
+h5 {
+  padding:10px 5%;
+
 }
 
 .clear-fix {
@@ -24,48 +68,11 @@ h6 {
   padding: 0 5%;
 }
 
-h1 {
-  font-size: 40px;
-  color: #f5a623;
-  line-height: 48px;
-  display: inline;
-}
-
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  color: #999;
-  line-height: 29px;
-  padding: 10px;
-}
-
-h3 {
-  font-style: italic;
-  font-size: 20px;
-  color: #000;
-  line-height: 22px;
-}
-
-h4 {
-  font-weight: bold;
-  font-size: 14px;
-  color: #4a4a4a;
-  line-height: 17px;
-}
-
-h2,
-h3,
-h4,
-h5 {
-  padding:10px 5%;
-
-}
-
-
 .date-text {
   font-style: italic;
   font-size: 14px;
-  color: #999;
+  color: #000;
+  color: rgba(0,0,0,0.37);
   line-height: 16px;
   float: left;
 }
@@ -73,7 +80,8 @@ h5 {
 .location-text {
   font-style: italic;
   font-size: 14px;
-  color: #999;
+  color: #000;
+  color: rgba(0,0,0,0.37);
   line-height: 16px;
   float: right;
 
@@ -81,57 +89,54 @@ h5 {
 
 p {
   font-size: 14px;
-  color: #333;
+  color: #000;
+  color: rgba(0,0,0,0.54);
   line-height: 21px;
+
 }
 
 a {
-  color: #1199c3;
-  text-decoration: none;
+  color: #000;  //Accent Text
+  color: rgba(0, 0, 0, 0.87%);
+  text-decoration: underline;
   margin-top: 10px;
   display: block;
 }
 
 .welcome-message {
   font-style: italic;
-  font-size: 18px;
-  color: #f3f3f3;
-  line-height: 28px;
+  font-size: 14px;
+  color: #000000; 
+  line-height: 21px;
 }
 
 #skills-h3 {
-  color: #f5ae23;
+  color: #000000;
   display: none;
 }
 
-.orange {
-  background-color: #f5ae23;
+.main-text {
+  color: #ffe57f;
 }
 
-.orange-text {
-  color: #f5ae23;
-}
 
-.white-text {
-  font-weight: bold;
-  color: #fff;
-}
-
-.gray {
-  background-color: #f3f3f3;
+.light-hue {
+  background-color: #FFFFFF;
   padding-bottom: 10px;
   clear:both;
 }
 
-.dark-gray {
-  background-color: #4a4a4a;
+.dark-hue {
+  background-color: #00897b;
 }
 
-/* TODO: Replace with image later */
-#header {
-  background-color: #484848;
+.main-hue{
+  background-color: #26a69a;
 }
 
+.center-text {
+  text-align: center;
+}
 .flex-box {
   display: -webkit-flex;
   display: flex;
@@ -166,6 +171,8 @@ span {
 
 #lets-connect {
   text-align: center;
+  background-color: #009688;
+
 }
 
 /* Media queries to handle various device widths */
