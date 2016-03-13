@@ -64,10 +64,13 @@ var education = {
     }]
 }
 
+/**
+* Formats and displays all of the information in the bio JSON
+*/
 bio.display = function() {
     $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
     $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
-    
+
     $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
     $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
     $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
@@ -81,14 +84,16 @@ bio.display = function() {
         for (i in bio.skills){
             $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
         }
-    } 
+    }
     $("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
     $("#footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
     $("#footerContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
     $("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-    $("#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));  
+    $("#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
 }
-
+/**
+* Formats and displays all of the information in the projects JSON
+*/
 projects.display = function() {
     for (project in projects.projects) {
         $("#projects").append(HTMLprojectStart);
@@ -102,7 +107,9 @@ projects.display = function() {
         }
     }
 }
-
+/**
+* Formats and displays all of the information in the education JSON
+*/
 education.display = function() {
     for (i in education.schools){
         $("#education").append(HTMLschoolStart);
@@ -120,7 +127,7 @@ education.display = function() {
             }
         }
         $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", majorsString));
-    }  
+    }
     for (i in education.onlineCourses){
         $(".education-entry:last").append(HTMLonlineClasses);
         var onlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title);
@@ -128,9 +135,11 @@ education.display = function() {
         var onlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
         $(".education-entry:last").append(onlineTitle + onlineSchool);
         $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[i].date));
-    }  
+    }
 }
-
+/**
+* Formats and displays all of the information in the work JSON
+*/
 work.display = function() {
     for (i in work.jobs){
         $("#workExperience").append(HTMLworkStart);
